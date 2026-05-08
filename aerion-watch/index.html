@@ -200,6 +200,10 @@
             transform: translateY(-2px)
         }
 
+        .glass .glass-text {
+            color: var(--muted) !important;
+        }
+
         .btn-gold::after {
             content: '';
             position: absolute;
@@ -217,9 +221,9 @@
         }
 
         .btn-outline {
-            border: 1px solid rgba(224, 146, 108, .3);
+            border: 1px solid rgba(255, 255, 255, .3);
             background: transparent;
-            color: var(--gold);
+            color: #ffffff;
             font-family: 'Outfit', sans-serif;
             font-weight: 400;
             letter-spacing: .15em;
@@ -228,6 +232,11 @@
             padding: .85rem 2rem;
             cursor: pointer;
             transition: all .4s
+        }
+
+        .product-card .btn-outline {
+            border-color: rgba(175, 140, 66, .3);
+            color: var(--gold);
         }
 
         .btn-outline:hover {
@@ -287,7 +296,12 @@
         /* Nav link */
         .nav-link {
             position: relative;
-            transition: color .3s
+            color: #ffffff;
+            transition: all .3s
+        }
+
+        .glass .nav-link {
+            color: var(--muted);
         }
 
         .nav-link::after {
@@ -302,7 +316,11 @@
         }
 
         .nav-link:hover {
-            color: var(--teal)
+            color: var(--gold)
+        }
+
+        .glass .nav-link:hover {
+            color: var(--gold)
         }
 
         .nav-link:hover::after {
@@ -595,15 +613,15 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#hero" class="font-display text-2xl text-cream hover:text-gold transition"
+        <a href="#hero" class="font-display text-2xl text-white hover:text-gold transition"
             onclick="closeMobile()">Home</a>
-        <a href="#collection" class="font-display text-2xl text-cream hover:text-gold transition"
+        <a href="#collection" class="font-display text-2xl text-white hover:text-gold transition"
             onclick="closeMobile()">Collection</a>
-        <a href="#craft" class="font-display text-2xl text-cream hover:text-gold transition"
+        <a href="#craft" class="font-display text-2xl text-white hover:text-gold transition"
             onclick="closeMobile()">Craftsmanship</a>
-        <a href="#newsletter" class="font-display text-2xl text-cream hover:text-gold transition"
+        <a href="#newsletter" class="font-display text-2xl text-white hover:text-gold transition"
             onclick="closeMobile()">Contact</a>
-        <button class="btn-outline mt-4" onclick="closeMobile();openAuth()">Sign In</button>
+        <button class="btn-outline mt-4 !text-white !border-white/30" onclick="closeMobile();openAuth()">Sign In</button>
     </div>
 
     <!-- Navigation -->
@@ -619,18 +637,18 @@
             <div class="flex items-center gap-5">
                 <a href="#" class="hidden sm:block btn-gold !py-2 !px-5 !text-[10px]" id="shopNowBtn"><span>Shop
                         Now</span></a>
-                <button class="text-muted hover:text-gold transition text-sm" onclick="openAuth()"
+                <button class="text-white glass-text hover:text-gold transition text-sm" onclick="openAuth()"
                     aria-label="Account"><i class="fa-regular fa-user"></i></button>
-                <button class="text-muted hover:text-gold transition text-sm" onclick="openWishlist()"
+                <button class="text-white glass-text hover:text-gold transition text-sm" onclick="openWishlist()"
                     aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span id="wishCount"
                         class="hidden ml-1 text-xs text-gold">0</span></button>
-                <button class="text-muted hover:text-gold transition text-sm relative" onclick="openCart()"
+                <button class="text-white glass-text hover:text-gold transition text-sm relative" onclick="openCart()"
                     aria-label="Cart">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span id="cartCount"
                         class="hidden absolute -top-2 -right-2 w-4 h-4 bg-gold text-bg text-[10px] font-semibold rounded-full flex items-center justify-center">0</span>
                 </button>
-                <button class="md:hidden text-muted hover:text-gold transition" onclick="openMobile()"
+                <button class="md:hidden text-white glass-text hover:text-gold transition" onclick="openMobile()"
                     aria-label="Menu"><i class="fa-solid fa-bars text-lg"></i></button>
             </div>
         </div>
