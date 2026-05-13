@@ -240,10 +240,10 @@
         }
 
         .btn-outline:hover {
-            border-color: var(--teal);
-            color: var(--teal);
-            background: rgba(78, 232, 208, .06);
-            box-shadow: 0 0 25px rgba(78, 232, 208, .08)
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(175, 140, 66, .06);
+            box-shadow: 0 0 25px rgba(175, 140, 66, .08)
         }
 
         /* Light Streaks — now multi-color */
@@ -852,7 +852,7 @@
         </div>
         <div
             class="max-w-7xl mx-auto mt-12 pt-8 border-t border-gold/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-muted text-xs">&copy; 2024 AERION. All rights reserved.</p>
+            <p class="text-muted text-xs">&copy; 2026 AERION. All rights reserved.</p>
             <div class="flex gap-6 text-muted text-xs">
                 <a href="#" class="hover:text-gold transition">Privacy</a>
                 <a href="#" class="hover:text-gold transition">Terms</a>
@@ -895,7 +895,7 @@
             <div class="p-8 md:p-12">
                 <div class="flex justify-between items-start mb-8">
                     <div>
-                        <p class="text-gold text-xs tracking-[.3em] uppercase" id="qvCategory">ROLEX</p>
+                        <p class="text-gold text-xs tracking-[.3em] uppercase" id="qvCategory">AERION</p>
                         <h3 class="font-display text-3xl md:text-4xl text-cream mt-1" id="qvName">Sovereign</h3>
                     </div>
                     <button onclick="closeQV()" class="text-muted hover:text-cream transition text-lg"
@@ -1157,6 +1157,7 @@
                 const isWished = wishlist.has(p.id);
                 const card = document.createElement('div');
                 card.className = 'product-card p-6 pb-8';
+                card.setAttribute('data-id', p.id);
                 card.setAttribute('data-category', p.category);
                 card.innerHTML = `
                 <div class="reflection"></div>
@@ -1328,12 +1329,19 @@
             if (wishlist.size > 0) { wc.textContent = wishlist.size; wc.classList.remove('hidden') }
             else { wc.classList.add('hidden') }
             /* Sync product card hearts */
-            document.querySelectorAll('.product-card .heart-btn').forEach(btn => {
-                const card = btn.closest('.product-card');
-                const pid = products.find(pp => pp.name === card.querySelector('h3').textContent)?.id;
-                if (pid !== undefined) {
-                    if (wishlist.has(pid)) { btn.classList.add('active', 'text-red-400'); btn.classList.remove('text-muted/40'); btn.innerHTML = '<i class="fa-solid fa-heart"></i>' }
-                    else { btn.classList.remove('active', 'text-red-400'); btn.classList.add('text-muted/40'); btn.innerHTML = '<i class="fa-regular fa-heart"></i>' }
+            document.querySelectorAll('.product-card').forEach(card => {
+                const pid = parseInt(card.getAttribute('data-id'));
+                const btn = card.querySelector('.heart-btn');
+                if (pid && btn) {
+                    if (wishlist.has(pid)) { 
+                        btn.classList.add('active', 'text-red-400'); 
+                        btn.classList.remove('text-muted/40'); 
+                        btn.innerHTML = '<i class="fa-solid fa-heart"></i>' 
+                    } else { 
+                        btn.classList.remove('active', 'text-red-400'); 
+                        btn.classList.add('text-muted/40'); 
+                        btn.innerHTML = '<i class="fa-regular fa-heart"></i>' 
+                    }
                 }
             });
         }
